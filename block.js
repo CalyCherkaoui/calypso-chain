@@ -1,4 +1,5 @@
 // ES6 JS class - OOP
+const SHA256 = require('crypto-js/sha256');
 
 class Block {
   constructor(timestamp, lastHash, hash, data) {
@@ -13,8 +14,8 @@ class Block {
   toString() {
     return `Block - 
     Timestamp: ${this.timestamp}
-    Last Hash: ${this.lastHash.substring(0, 8)}
-    Hash     : ${this.hash.substring(0, 8)}
+    Last Hash: ${this.lastHash.substring(0, 15)}
+    Hash     : ${this.hash.substring(0, 15)}
     Data     : ${this.data}`;
   }
 
@@ -29,8 +30,14 @@ class Block {
   static mineBlock(lastBlock, data) {
     const timestamp = Date.now();
     const lastHash = lastBlock.hash;
-    const hash = 'generated-hash';
+    const hash = Block.hash(timestamp, lastHash, data);
     return new this(timestamp, lastHash, hash, data);
+  }
+
+  // hash function
+
+  static hash(timestamp, lastHash, data) {
+    return SHA256(`${timestamp}${lastHash}${data}`).toString();
   }
 }
 
