@@ -15,8 +15,13 @@ class Block {
     Timestamp: ${this.timestamp}
     Last Hash: ${this.lastHash.substring(0, 8)}
     Hash:    : ${this.hash.substring(0, 8)}
-    Data:    : ${this.data}
-    `
+    Data:    : ${this.data}`;
+  }
+
+  // genesis block with static function that enable Block.genesis()
+
+  static genesis() {
+    return new this('Initial timestamp', '-----', 'a7x26-f95f', []);
   }
 }
 
