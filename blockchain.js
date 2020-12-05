@@ -37,6 +37,25 @@ class Blockchain {
     return true;
   }
 
+  /* Replacing chain with a new valid one so we can achieve consensus among users of the blockchain.
+    This prevents the blockchain to become independent
+    1 - we verify if the newchain is longer than the original
+    2 - we verify if it passes the validation rules set up in isValidChain method 
+    NB: the parameter passed here is an array newBlockChain.chain*/
+
+  replaceChain(newChain) {
+    if (newChain.length <= this.chain.length) {
+      console.log('Recieved new chain is shorter than the current chain.');
+      return;
+    } else if (!this.isValidChain(newChain)) {
+      console.log('Recieved new chain is not valid.');
+      return;
+    }
+
+    console.log('Replacing the current chain with recieved chain');
+    this.chain = newChain;
+  }
+
 }
 
 module.exports = Blockchain;
