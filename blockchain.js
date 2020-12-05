@@ -37,8 +37,10 @@ class Blockchain {
     return true;
   }
 
-  /* Replacing chain by new valid one
-  1 - we verify if the newchain is longer than the original */
+  /* Replacing chain by new valid one so we can achieve consensus among of users of the blockchain.
+    This prevent the blockchain to become independent
+    1 - we verify if the newchain is longer than the original
+    2 - we verify if it passes the validation rules setted up in isValidChain method */
 
   replaceChain(newChain) {
     if (newChain.chain.length <= this.chain.length) {
