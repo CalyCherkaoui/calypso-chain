@@ -45,4 +45,11 @@ describe('Blockchain', () => {
 
     expect(originchain.chain).toEqual(newchain.chain);
   });
+
+  it('Cannot replace the chain with shorter or equal chain in term of length', () => {
+    originchain.addBlock('newblock in the original chain');
+    originchain.replaceChain(newchain.chain);
+
+    expect(originchain.chain).not.toEqual(newchain.chain);
+  });
 });
