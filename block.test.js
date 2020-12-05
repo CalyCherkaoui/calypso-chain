@@ -9,7 +9,6 @@ describe('Block', () => {
     block = Block.mineBlock(lastBlock, data);
   });
 
-
   it('sets the `data` to match the input', () => {
     expect(block.data).toEqual(data);
   });
