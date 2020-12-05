@@ -31,4 +31,11 @@ describe('Blockchain', () => {
 
     expect(originchain.isValidChain(newchain.chain)).toBe(false);
   });
+
+  it('Dos not validate a corrupted chain', () => {
+    newchain.addBlock('foobar');
+    newchain.chain[1].data = 'corrupted foobar';
+
+    expect(originchain.isValidChain(newchain.chain)).toBe(false);
+  });
 });
