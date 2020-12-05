@@ -2,20 +2,26 @@ const Blockchain = require('./blockchain');
 const Block = require('./block');
 
 describe('Blockchain', () => {
-  let chaintst;
+  let bc, bc2;
 
   beforeEach(() => {
-    chaintst = new Blockchain();
+    bc  = new Blockchain();
+    bc2 = new Blockchain();
   });
 
   it('starts with genesis block', () => {
-    expect(chaintst.chain[0]).toEqual(Block.genesis());
+    expect(bc.chain[0]).toEqual(Block.genesis());
   });
 
   it('adds a block to chain with given data', () => {
-    const data = 'new block into chain test';
-    chaintst.addBlock(data);
+    const data = 'foobar';
+    bc.addBlock(data);
 
-    expect(chaintst.chain[chaintst.chain.length-1].data).toEqual(data);
+    expect(bc.chain[bc.chain.length-1].data).toEqual(data);
+  });
+
+  it('validates a valid chain', () => {
+    bc2.addBlock('foo');
+    expect(bc.isValidChain(bc2.chain)).toBe(true);
   });
 });
