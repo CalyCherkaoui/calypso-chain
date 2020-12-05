@@ -10,5 +10,7 @@ describe('Block', () => {
   });
 
 
-  it('sets the `data` to match the input', () => {});
+  it('sets the `data` to match the input', () => {
+    expect(block.data).toEqual(data);
+  });
 });
