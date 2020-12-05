@@ -2,26 +2,33 @@ const Blockchain = require('./blockchain');
 const Block = require('./block');
 
 describe('Blockchain', () => {
-  let bc, bc2;
+  let originchain, newchain;
 
   beforeEach(() => {
-    bc  = new Blockchain();
-    bc2 = new Blockchain();
+    originchain  = new Blockchain();
+    newchain = new Blockchain();
   });
 
   it('starts with genesis block', () => {
-    expect(bc.chain[0]).toEqual(Block.genesis());
+    expect(originchain.chain[0]).toEqual(Block.genesis());
   });
 
   it('adds a block to chain with given data', () => {
     const data = 'foobar';
-    bc.addBlock(data);
+    originchain.addBlock(data);
 
-    expect(bc.chain[bc.chain.length-1].data).toEqual(data);
+    expect(originchain.chain[originchain.chain.length-1].data).toEqual(data);
   });
 
   it('validates a valid chain', () => {
-    bc2.addBlock('foo');
-    expect(bc.isValidChain(bc2.chain)).toBe(true);
+    newchain.addBlock('foobar');
+
+    expect(originchain.isValidChain(newchain.chain)).toBe(true);
+  });
+
+  it('Dos not valid a chain with corrupted genesis block', () => {
+    newchain.chain[0].data = 'corrupted data';
+
+    expect(originchain.isValidChain(newchain.chain)).toBe(false);
   });
 });
