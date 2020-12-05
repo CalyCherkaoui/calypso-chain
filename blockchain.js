@@ -43,7 +43,7 @@ class Blockchain {
     2 - we verify if it passes the validation rules setted up in isValidChain method */
 
   replaceChain(newChain) {
-    if (newChain.chain.length <= this.chain.length) {
+    if (newChain.length <= this.chain.length) {
       console.log('Recieved new chain is shorter than the current chain.');
       return;
     } else if (!this.isValidChain(newChain)) {
@@ -52,7 +52,7 @@ class Blockchain {
     }
 
     console.log('Replacing the current chain with recieved chain');
-    this.chain = newChain.chain;
+    this.chain = newChain;
   }
 
 }
