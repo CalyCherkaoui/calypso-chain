@@ -13,3 +13,5 @@ class Blockchain {
     return block
   }
 }
+
+module.exports = Blockchain;
