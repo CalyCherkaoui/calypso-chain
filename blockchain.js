@@ -14,12 +14,12 @@ class Blockchain {
   }
 
   /*  IsValidChain method
-  1- Compare the genesis block of the upcomming chain with one in this Blockchain
+  1- Compare the genesis block of the upcoming chain with one in this Blockchain
   stringify the genesis objects to compare them 
-  2 - now it's verified let's compare the Bolck befor the last one in the upcomming
-     chain matches the lastBlock og this Blockchain 
+  2 - now it's verified let's compare the Block before the last one in the upcoming
+     chain matches the lastBlock of this Blockchain 
   3 - need to verify either the lastHashe-s match or generate a hash with
-      the same data of the upcoming chain and compare it with the lastHash of the upcaming chain new block
+      the same data of the upcoming chain and compare it with the lastHash of the upcoming chain new block
   4 - The method returns true if it passes the two validation conditions above*/
 
   isValidChain(chain) {
