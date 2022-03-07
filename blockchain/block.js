@@ -1,5 +1,5 @@
 // ES6 JS class - OOP
-const SHA256 = require('crypto-js/sha256');
+import SHA256 from 'crypto-js/sha256';
 
 class Block {
   constructor(timestamp, lastHash, hash, data) {
@@ -50,4 +50,4 @@ class Block {
 
 // exporting the module Block
 
-module.exports = Block;
+export default Block;
