@@ -1,5 +1,5 @@
-const Blockchain = require('./index');
-const Block = require('./block');
+import Blockchain from './index';
+import { genesis } from './block';
 
 describe('Blockchain', () => {
   let originchain, newchain;
@@ -10,7 +10,7 @@ describe('Blockchain', () => {
   });
 
   it('starts with genesis block', () => {
-    expect(originchain.chain[0]).toEqual(Block.genesis());
+    expect(originchain.chain[0]).toEqual(genesis());
   });
 
   it('adds a block to chain with given data', () => {
