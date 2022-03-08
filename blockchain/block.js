@@ -9,8 +9,6 @@ class Block {
     this.data = data;
   }
 
-  // for debugging
-
   toString() {
     return `Block - 
     Timestamp: ${this.timestamp}
@@ -18,8 +16,6 @@ class Block {
     Hash     : ${this.hash.substring(0, 15)}
     Data     : ${this.data}`;
   }
-
-  // genesis block with static function that enable Block.genesis()
 
   static genesis() {
     return new this('Initial timestamp', '-----', 'a7x26-f95f', []);
