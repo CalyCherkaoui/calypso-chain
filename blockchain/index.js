@@ -1,4 +1,4 @@
-const Block = require('./block').default;
+import Block from './block';
 
 class Blockchain {
   constructor() {
@@ -43,4 +43,4 @@ class Blockchain {
 
 }
 
-module.exports = Blockchain;
+export default Blockchain;
