@@ -39,11 +39,4 @@ describe('Blockchain', () => {
     expect(originchain.isValidChain(newchain.chain)).toBe(false);
   });
 
-  it('replaces the chain with a valid chain', () => {
-    newchain.addBlock('valid replacement');
-    originchain.replaceChain(newchain.chain);
-
-    expect(originchain.chain).toEqual(newchain.chain);
-  });
-
 });
